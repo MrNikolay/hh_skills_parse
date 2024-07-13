@@ -6,10 +6,12 @@ from pprint import pprint
 class HeadHunter:
     __api_url = "https://api.hh.ru/vacancies"
 
-    def __init__(self, keyword: str, page_count: int = 20):
+    def __init__(self, keyword: str, page_count: int = 1, is_ignore: bool = True):
         self.keyword = keyword
         self.page_count = page_count
+        self.is_ignore = is_ignore
         self.all_vacancies = self.get_all_vacancies()
+
 
     def get_all_vacancies(self):
         all_vacancies = []
@@ -62,6 +64,7 @@ class HeadHunter:
     def get_skills_statistics(self):
         print('-- СОБИРАЕМ СТАТИСТИКУ ПО НАВЫКАМ --')
         skills = {}
+        vacancies_count = 0
         for v_id in self.all_vacancies:
             print(f'Вакансия (id={v_id}):', end=' ')
             vacancy_skills = self.get_vacancy_skills(v_id)
@@ -71,9 +74,15 @@ class HeadHunter:
                         skills[skill] += 1
                     else:
                         skills[skill] = 1
+                vacancies_count += 1
+
+            else:
+                if not self.is_ignore:
+                    vacancies_count += 1
+
             print('OK!')
 
-        return skills
+        return vacancies_count, skills
 
 
 def test():

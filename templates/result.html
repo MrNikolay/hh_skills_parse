@@ -1,22 +1,22 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title>Head Hunter | Skills-Parser</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="result_styles.css">
-    <link rel="stylesheet" href="SkillSlider.css">
+    <title>TEST</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='result_styles.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='SkillSlider.css') }}">
 </head>
 <body>
     <header>
-        <a href="index.html" class="link_no_decoration">
+        <a href="/" class="link_no_decoration">
             <div class="title_text">
                 <h1>HEAD HUNTER</h1>
                 <h2>SKILLS-PARSER</h2>
             </div>
         </a>
 
-        <a href="index.html" class="link_no_decoration">
+        <a href="/" class="link_no_decoration">
             <p id="back_to_main">Вернуться на главную</p>
         </a>
     </header>
@@ -25,7 +25,7 @@
         <!-- Верхний титульный текст -->
         <div class="pref">
             <p>Результат по запросу:</p>
-            <p id="user_query">Junior Python Backend Developer</p>
+            <p id="user_query">{{ query }}</p>
         </div>
 
         <!-- Ползунок с указанием количества отображаемых навыков -->
@@ -43,140 +43,17 @@
                 <td class="table_label">Количество<br>упоминаний</td>
                 <td class="table_label">Процент от<br>всех вакансий</td>
             </tr>
-            <tr class="element">
-                <td>
-                    <div class="green_circle"></div>
-                    <span class="skill_name">Python</span>
-                </td>
-                <td class="mention_count">983</td>
-                <td class="percent">65,5%</td>
-            </tr>
-
-            <tr class="element">
-                <td>
-                    <div class="green_circle"></div>
-                    <span class="skill_name">SQL</span>
-                </td>
-                <td class="mention_count">569</td>
-                <td class="percent">35,0%</td>
-            </tr>
-
-            <tr class="element">
-                <td>
-                    <div class="green_circle"></div>
-                    <span class="skill_name">SQL</span>
-                </td>
-                <td class="mention_count">569</td>
-                <td class="percent">35,0%</td>
-            </tr>
-
-            <tr class="element">
-                <td>
-                    <div class="green_circle"></div>
-                    <span class="skill_name">SQL</span>
-                </td>
-                <td class="mention_count">569</td>
-                <td class="percent">35,0%</td>
-            </tr>
-
-            <tr class="element">
-                <td>
-                    <div class="green_circle"></div>
-                    <span class="skill_name">SQL</span>
-                </td>
-                <td class="mention_count">569</td>
-                <td class="percent">35,0%</td>
-            </tr>
-
-            <tr class="element hidden">
-                <td>
-                    <div class="green_circle"></div>
-                    <span class="skill_name">SQL</span>
-                </td>
-                <td class="mention_count">569</td>
-                <td class="percent">35,0%</td>
-            </tr>
-
-            <tr class="element hidden">
-                <td>
-                    <div class="green_circle"></div>
-                    <span class="skill_name">SQL</span>
-                </td>
-                <td class="mention_count">569</td>
-                <td class="percent">35,0%</td>
-            </tr>
-
-            <tr class="element hidden">
-                <td>
-                    <div class="green_circle"></div>
-                    <span class="skill_name">SQL</span>
-                </td>
-                <td class="mention_count">569</td>
-                <td class="percent">35,0%</td>
-            </tr>
-
-            <tr class="element hidden">
-                <td>
-                    <div class="green_circle"></div>
-                    <span class="skill_name">SQL</span>
-                </td>
-                <td class="mention_count">569</td>
-                <td class="percent">35,0%</td>
-            </tr>
-
-            <tr class="element hidden">
-                <td>
-                    <div class="green_circle"></div>
-                    <span class="skill_name">SQL</span>
-                </td>
-                <td class="mention_count">569</td>
-                <td class="percent">35,0%</td>
-            </tr>
-
-            <tr class="element hidden">
-                <td>
-                    <div class="green_circle"></div>
-                    <span class="skill_name">SQL</span>
-                </td>
-                <td class="mention_count">569</td>
-                <td class="percent">35,0%</td>
-            </tr>
-
-            <tr class="element hidden">
-                <td>
-                    <div class="green_circle"></div>
-                    <span class="skill_name">SQL</span>
-                </td>
-                <td class="mention_count">569</td>
-                <td class="percent">35,0%</td>
-            </tr>
-
-            <tr class="element hidden">
-                <td>
-                    <div class="green_circle"></div>
-                    <span class="skill_name">SQL</span>
-                </td>
-                <td class="mention_count">569</td>
-                <td class="percent">35,0%</td>
-            </tr>
-
-            <tr class="element hidden">
-                <td>
-                    <div class="green_circle"></div>
-                    <span class="skill_name">SQL</span>
-                </td>
-                <td class="mention_count">569</td>
-                <td class="percent">35,0%</td>
-            </tr>
-
-            <tr class="element hidden">
-                <td>
-                    <div class="green_circle"></div>
-                    <span class="skill_name">SQL</span>
-                </td>
-                <td class="mention_count">569</td>
-                <td class="percent">35,0%</td>
-            </tr>
+            {% for index in range(skills|length) %}
+                {% set skill = skills[index] %}
+                <tr class='{{ "element" if index < 5 else "element hidden" }}'>
+                    <td>
+                        <div class="green_circle"></div>
+                        <span class="skill_name">{{ skill.name }}</span>
+                    </td>
+                    <td class="mention_count">{{ skill.count }}</td>
+                    <td class="percent">{{ skill.percent }}</td>
+                </tr>
+            {% endfor %}
         </table>
 
     </main>

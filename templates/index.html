@@ -3,9 +3,9 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <title>Head Hunter | Skills-Parser</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="VacancySlider.css">
+    <title>TEST</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='VacancySlider.css') }}">
 </head>
 <body>
     <div class="title_text">
@@ -13,7 +13,11 @@
         <h2>SKILLS-PARSER</h2>
     </div>
 
-    <form id="main_form" action="" method="POST">
+    {% if is_warning_message %}
+        <p id="warning_message">Внимание: Запрос не должен быть пустой строкой!</p>
+    {% endif %}
+
+    <form id="main_form" action="/" method="POST">
         <!-- Поле для ввода запроса -->
         <input
                 id="query_input"
@@ -26,27 +30,27 @@
         <!-- Ползунок с указателем количества вакансий -->
         <div class="slider-container">
             <label for="vacancySlider"><span id="slider_label_text">Количество вакансий</span></label>
-            <input type="range" id="vacancySlider" class="styled-slider slider-progress" min="0" max="4" step="1" value="1">
+            <input name="vacancy_count" type="range" id="vacancySlider" class="styled-slider slider-progress" min="0" max="4" step="1" value="1">
             <div id="sliderValue">200</div>
         </div>
 
         <!-- Чекбокс с галочкой - "Игнорировать вакансии без навыков" -->
         <div class="checkbox_block">
             <label class="is_ignore_checkbox">
-                <input type="checkbox" checked>
+                <input name="is_ignore" type="checkbox" checked>
                 <span class="check_box"></span>
                 Игнорировать вакансии без навыков
             </label>
         </div>
 
         <!-- Кнопка - "НАЧАТЬ" -->
-        <input id="start_button" type="submit" value="НАЧАТЬ" onclick="showLoader()">
+        <input id="start_button" type="submit" value="НАЧАТЬ">
     </form>
 
 
     <!-- Гифка для загрузочного экрана (ЛОАДЕР) -->
     <div id="loader">
-        <img src="loader_main.gif">
+        <img src="{{ url_for('static', filename='img/loader_main.gif') }}">
         <p>Анализируем вакансии...</p>
     </div>
 
@@ -77,8 +81,7 @@
         startButton = document.getElementById('start_button')
 
         startButton.addEventListener('click', function(event) {
-            event.preventDefault();  // Предотвращаем перезагрузку страницы при отправке формы (МОГУТ ВОЗНИКНУТЬ ПРОБЛЕМЫ В БЭКЕ)
-
+            alert('Стоит предупредить, что ожидание прогрузки страницы может занять довольно много времени. Это зависит от количества анализируемых вакансий, которое вы указали в форме. Пожалуйста, будьте терпеливы!')
             mainForm.style.display = "none";
             loader.style.display = "block";
 

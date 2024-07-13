@@ -122,17 +122,12 @@ body {
     margin-top: 2px;
     width: 23px;
     height: 23px;
-    background-image: url(button_off.svg);
+    background-image: url(img/button_off.svg);
 }
 
 /* CHECKBOX INPUT | CHECKED */
 .is_ignore_checkbox input:checked + .check_box {
-    background-image: url(button_on.svg);
-}
-
-/* CHECKBOX INPUT | DISABLED */
-.is_ignore_checkbox input:checked + .check_box {
-    background-image: url(button_on.svg);
+    background-image: url(img/button_on.svg);
 }
 
 /* КНОПКА "НАЧАТЬ" */
@@ -162,4 +157,10 @@ body {
     font-family: "Inter", sans-serif;
     font-weight: 500;
     color: white;
+}
+
+#warning_message {
+    font-size: 24px;
+    color: #e0182c;
+    margin-top: 30px;
 }
