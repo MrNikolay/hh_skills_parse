@@ -1,0 +1,165 @@
+/* Main Styles For Project */
+
+/* Загружаем шрифты */
+@import url('https://fonts.googleapis.com/css2?family=Koulen&display=swap');  /* Koulen */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');  /* Inter */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');  /* Montserrat */
+
+html, body {
+    min-height: 100%;
+}
+
+body {
+    background: linear-gradient(rgb(36, 65, 63) 50%, rgb(32, 38, 43)) no-repeat;
+    text-align: center;
+}
+
+.title_text {
+    user-select: none
+}
+
+.title_text h1 {
+    font-family: "Koulen", sans-serif;
+    color: #D6001C;
+    font-size: 128px;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.title_text h2 {
+    font-family: "Inter", sans-serif;
+    color: white;
+    font-size: 48px;
+    font-weight: 500;
+    margin-top: -145px;
+}
+
+#main_form {
+    margin-top: 50px;
+    display: block;
+}
+
+#query_input {
+    width: 600px;
+    margin-top: 10px;
+    text-align: center;
+    font-size: 32px;
+    font-family: "Inter", sans-serif;
+    font-weight: 500;
+    border-radius: 8px;
+    border: 3px solid #c2c7cc;
+    padding: 20px;
+    color: #0048B4;
+}
+
+#query_input:hover {
+    border-color: #7F8C97;
+}
+
+.slider-container {
+    width: 600px;
+    margin-left :auto;
+    margin-right: auto;
+    margin-top: 50px;
+    text-align: center;
+}
+
+#slider_label_text {
+    font-size: 32px;
+    font-family: "Inter", sans-serif;
+    font-weight: 600;
+    color: white;
+    user-select: none
+}
+
+#vacancySlider {
+    margin-top: 20px;
+    background: transparent;
+}
+
+#vacancySlider:hover {
+    cursor: pointer;
+}
+
+#sliderValue {
+    margin-top: 0px;
+    font-size: 20px;
+    color: #5391ED;
+}
+
+.checkbox_block {
+    margin-top: 50px;
+}
+
+/* checkbox label */
+.is_ignore_checkbox {
+    padding-left: 1.2em;
+    color: white;
+    font-size: 24px;
+    font-family: "Inter", sans-serif;
+    font-weight: 400;
+}
+
+.is_ignore_checkbox:hover {
+    cursor: pointer;
+}
+
+/* checkbox input */
+.is_ignore_checkbox input {
+    /* --webkit-appearance: none; */
+    /* --moz-appearance: none; */
+    position: absolute;
+    appearance: none;
+    border: 0px;
+    width: 24px;
+    height: 24px;
+}
+
+/* checkbox button */
+.check_box {
+    position: absolute;
+    margin-left: -1.2em;
+    margin-top: 2px;
+    width: 23px;
+    height: 23px;
+    background-image: url(button_off.svg);
+}
+
+/* CHECKBOX INPUT | CHECKED */
+.is_ignore_checkbox input:checked + .check_box {
+    background-image: url(button_on.svg);
+}
+
+/* CHECKBOX INPUT | DISABLED */
+.is_ignore_checkbox input:checked + .check_box {
+    background-image: url(button_on.svg);
+}
+
+/* КНОПКА "НАЧАТЬ" */
+#start_button {
+    margin-top: 50px;
+    background-color: #DB4A4A;
+    color: white;
+    width: 315px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-size: 36px;
+    font-family: "Montserrat", sans-serif;
+    font-weight: 700;
+    border: 0px;
+}
+
+#start_button:hover {
+    cursor: pointer;
+}
+
+/* Загрузочный лоадер */
+#loader {
+    display: none;
+    margin: auto;
+    text-align: center;
+    font-size: 36px;
+    font-family: "Inter", sans-serif;
+    font-weight: 500;
+    color: white;
+}

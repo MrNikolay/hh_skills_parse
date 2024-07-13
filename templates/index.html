@@ -1,0 +1,88 @@
+<!-- Hello, World! -->
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Head Hunter | Skills-Parser</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="VacancySlider.css">
+</head>
+<body>
+    <div class="title_text">
+        <h1>HEAD HUNTER</h1>
+        <h2>SKILLS-PARSER</h2>
+    </div>
+
+    <form id="main_form" action="" method="POST">
+        <!-- Поле для ввода запроса -->
+        <input
+                id="query_input"
+                type="text" name="query"
+                placeholder="Введите запрос"
+                onkeydown="this.style.fontSize = (32 - this.value.length * 0.25) + 'px';"
+                maxlength="40"
+        >
+
+        <!-- Ползунок с указателем количества вакансий -->
+        <div class="slider-container">
+            <label for="vacancySlider"><span id="slider_label_text">Количество вакансий</span></label>
+            <input type="range" id="vacancySlider" class="styled-slider slider-progress" min="0" max="4" step="1" value="1">
+            <div id="sliderValue">200</div>
+        </div>
+
+        <!-- Чекбокс с галочкой - "Игнорировать вакансии без навыков" -->
+        <div class="checkbox_block">
+            <label class="is_ignore_checkbox">
+                <input type="checkbox" checked>
+                <span class="check_box"></span>
+                Игнорировать вакансии без навыков
+            </label>
+        </div>
+
+        <!-- Кнопка - "НАЧАТЬ" -->
+        <input id="start_button" type="submit" value="НАЧАТЬ" onclick="showLoader()">
+    </form>
+
+
+    <!-- Гифка для загрузочного экрана (ЛОАДЕР) -->
+    <div id="loader">
+        <img src="loader_main.gif">
+        <p>Анализируем вакансии...</p>
+    </div>
+
+
+    <script>
+        const slider = document.getElementById('vacancySlider');
+        const sliderValue = document.getElementById('sliderValue');
+        const values = [100, 500, 1000, 1500, 2000];
+
+        const mainForm = document.getElementById('main_form');
+        const loader = document.getElementById('loader');
+
+        slider.addEventListener('input', function() {
+            sliderValue.textContent = values[slider.value];
+        });
+
+        // Initial value
+        sliderValue.textContent = values[slider.value];
+
+        for (let e of document.querySelectorAll('input[type="range"].slider-progress')) {
+            e.style.setProperty('--value', e.value);
+            e.style.setProperty('--min', e.min == '' ? '0' : e.min);
+            e.style.setProperty('--max', e.max == '' ? '100' : e.max);
+            e.addEventListener('input', () => e.style.setProperty('--value', e.value));
+        }
+
+        // Function to show loading screen when user tap the start button
+        startButton = document.getElementById('start_button')
+
+        startButton.addEventListener('click', function(event) {
+            event.preventDefault();  // Предотвращаем перезагрузку страницы при отправке формы (МОГУТ ВОЗНИКНУТЬ ПРОБЛЕМЫ В БЭКЕ)
+
+            mainForm.style.display = "none";
+            loader.style.display = "block";
+
+        });
+    </script>
+</body>
+</html>

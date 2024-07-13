@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Head Hunter | Skills-Parser</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="result_styles.css">
+    <link rel="stylesheet" href="SkillSlider.css">
+</head>
+<body>
+    <header>
+        <a href="index.html" class="link_no_decoration">
+            <div class="title_text">
+                <h1>HEAD HUNTER</h1>
+                <h2>SKILLS-PARSER</h2>
+            </div>
+        </a>
+
+        <a href="index.html" class="link_no_decoration">
+            <p id="back_to_main">Вернуться на главную</p>
+        </a>
+    </header>
+
+    <main>
+        <!-- Верхний титульный текст -->
+        <div class="pref">
+            <p>Результат по запросу:</p>
+            <p id="user_query">Junior Python Backend Developer</p>
+        </div>
+
+        <!-- Ползунок с указанием количества отображаемых навыков -->
+        <div class="slider-container">
+            <label for="resultSlider"><span id="slider_label_text">Количество навыков:</span></label>
+            <input type="range" id="resultSlider" class="styled-slider slider-progress" min="5" max="15" step="5" value="5">
+            <div id="sliderValue">5</div>
+        </div>
+
+        <!-- Таблица с выводом результата -->
+
+        <table>
+            <tr>
+                <td class="table_label">Название</td>
+                <td class="table_label">Количество<br>упоминаний</td>
+                <td class="table_label">Процент от<br>всех вакансий</td>
+            </tr>
+            <tr class="element">
+                <td>
+                    <div class="green_circle"></div>
+                    <span class="skill_name">Python</span>
+                </td>
+                <td class="mention_count">983</td>
+                <td class="percent">65,5%</td>
+            </tr>
+
+            <tr class="element">
+                <td>
+                    <div class="green_circle"></div>
+                    <span class="skill_name">SQL</span>
+                </td>
+                <td class="mention_count">569</td>
+                <td class="percent">35,0%</td>
+            </tr>
+
+            <tr class="element">
+                <td>
+                    <div class="green_circle"></div>
+                    <span class="skill_name">SQL</span>
+                </td>
+                <td class="mention_count">569</td>
+                <td class="percent">35,0%</td>
+            </tr>
+
+            <tr class="element">
+                <td>
+                    <div class="green_circle"></div>
+                    <span class="skill_name">SQL</span>
+                </td>
+                <td class="mention_count">569</td>
+                <td class="percent">35,0%</td>
+            </tr>
+
+            <tr class="element">
+                <td>
+                    <div class="green_circle"></div>
+                    <span class="skill_name">SQL</span>
+                </td>
+                <td class="mention_count">569</td>
+                <td class="percent">35,0%</td>
+            </tr>
+
+            <tr class="element hidden">
+                <td>
+                    <div class="green_circle"></div>
+                    <span class="skill_name">SQL</span>
+                </td>
+                <td class="mention_count">569</td>
+                <td class="percent">35,0%</td>
+            </tr>
+
+            <tr class="element hidden">
+                <td>
+                    <div class="green_circle"></div>
+                    <span class="skill_name">SQL</span>
+                </td>
+                <td class="mention_count">569</td>
+                <td class="percent">35,0%</td>
+            </tr>
+
+            <tr class="element hidden">
+                <td>
+                    <div class="green_circle"></div>
+                    <span class="skill_name">SQL</span>
+                </td>
+                <td class="mention_count">569</td>
+                <td class="percent">35,0%</td>
+            </tr>
+
+            <tr class="element hidden">
+                <td>
+                    <div class="green_circle"></div>
+                    <span class="skill_name">SQL</span>
+                </td>
+                <td class="mention_count">569</td>
+                <td class="percent">35,0%</td>
+            </tr>
+
+            <tr class="element hidden">
+                <td>
+                    <div class="green_circle"></div>
+                    <span class="skill_name">SQL</span>
+                </td>
+                <td class="mention_count">569</td>
+                <td class="percent">35,0%</td>
+            </tr>
+
+            <tr class="element hidden">
+                <td>
+                    <div class="green_circle"></div>
+                    <span class="skill_name">SQL</span>
+                </td>
+                <td class="mention_count">569</td>
+                <td class="percent">35,0%</td>
+            </tr>
+
+            <tr class="element hidden">
+                <td>
+                    <div class="green_circle"></div>
+                    <span class="skill_name">SQL</span>
+                </td>
+                <td class="mention_count">569</td>
+                <td class="percent">35,0%</td>
+            </tr>
+
+            <tr class="element hidden">
+                <td>
+                    <div class="green_circle"></div>
+                    <span class="skill_name">SQL</span>
+                </td>
+                <td class="mention_count">569</td>
+                <td class="percent">35,0%</td>
+            </tr>
+
+            <tr class="element hidden">
+                <td>
+                    <div class="green_circle"></div>
+                    <span class="skill_name">SQL</span>
+                </td>
+                <td class="mention_count">569</td>
+                <td class="percent">35,0%</td>
+            </tr>
+
+            <tr class="element hidden">
+                <td>
+                    <div class="green_circle"></div>
+                    <span class="skill_name">SQL</span>
+                </td>
+                <td class="mention_count">569</td>
+                <td class="percent">35,0%</td>
+            </tr>
+        </table>
+
+    </main>
+
+
+
+    <script>
+    // НАСТРОЙКА СЛАЙДЕРА
+        const slider = document.getElementById('resultSlider');
+        const sliderValue = document.getElementById('sliderValue');
+        const elements = document.getElementsByClassName('element');
+
+        // Линия прогресса на слайдере
+        for (let e of document.querySelectorAll('input[type="range"].slider-progress')) {
+            e.style.setProperty('--value', e.value);
+            e.style.setProperty('--min', e.min == '' ? '0' : e.min);
+            e.style.setProperty('--max', e.max == '' ? '100' : e.max);
+            e.addEventListener('input', () => e.style.setProperty('--value', e.value));
+        }
+
+        // Изменение текста-указателя на значение слайдера
+        slider.addEventListener('input', function() {
+            sliderValue.textContent = slider.value;
+        });
+
+        // Отображение необходимого количества навыков
+        slider.addEventListener('input', function () {
+            for (i = 0; i < elements.length; i++) {
+                if (i < slider.value) {
+                    elements[i].classList.remove('hidden');
+                } else {
+                    elements[i].classList.add('hidden');
+                }
+            }
+        });
+    </script>
+</body>
+</html>
