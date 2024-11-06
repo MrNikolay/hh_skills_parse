@@ -1,5 +1,5 @@
 # hh_skills_parse
 This is a simple web app for parsing skills from the site hh.ru
 
-Backend language: Python
+Backend language: Python\n
 Used framework: Flask
